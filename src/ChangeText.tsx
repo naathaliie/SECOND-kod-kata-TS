@@ -34,6 +34,7 @@ const ChangeText = () => {
 
   return (
     <div className="changeTextDiv">
+      <h3>ChangeText</h3>
       <div>
         <input
           type="text"

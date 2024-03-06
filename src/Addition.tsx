@@ -36,6 +36,7 @@ const Addition = () => {
 
   return (
     <div className="additionDiv">
+      <h3>Addition</h3>
       <div>
         <input
           className="inputOne"
