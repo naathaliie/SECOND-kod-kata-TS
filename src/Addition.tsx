@@ -17,7 +17,7 @@ const Addition = () => {
   const [result, setResult] = useState(0);
   const [inputOne, setInputOne] = useState("");
   const [inputTwo, setInputTwo] = useState("");
-  const inputOneRef = useRef(null);
+  const inputRef = useRef(null);
 
   const handleOnClick = () => {
     if (inputOne !== "" && inputTwo !== "") {
@@ -26,9 +26,7 @@ const Addition = () => {
       setInputOne("");
       setInputTwo("");
 
-      if (inputOneRef.current) {
-        inputOneRef.current.focus();
-      }
+      inputRef.current.focus(); //FRÅGA NIKLAS
     } else {
       alert("skriv in en siffra i båda fälten, tack!");
     }
@@ -39,9 +37,9 @@ const Addition = () => {
       <h3>Addition</h3>
       <div>
         <input
+          ref={inputRef}
           className="inputOne"
           type="number"
-          ref={inputOneRef}
           value={inputOne}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setInputOne(e.target.value);
