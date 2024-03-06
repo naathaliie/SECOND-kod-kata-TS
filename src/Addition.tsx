@@ -4,18 +4,31 @@ import { useRef, useState } from "react";
 och en knapp samt en p-tagg. När användaren klickar
  på knappen ska siffrorna i fälten adderas och 
  summan visas i p-taggen.
+ 
+UTMANING: Se till att komponenten Addition fungerar 
+oavsett vad användaren stoppar i textfälten. 
+Töm fälten när man klickar på knappen. Sätt fokus
+ tillbaka på första textfältet. Se till att taborder 
+ är korrekt.
+
+ LYCKAS DOCK EJ GÖRA SÅ ATT MAN KAN SKRIVA IN VAD SOM HELST, ENDAST SIFFROR
  */
 const Addition = () => {
-  const inputOneRef = useRef<HTMLInputElement>(null);
-  const inputTwoRef = useRef<HTMLInputElement>(null);
   const [result, setResult] = useState(0);
+  const [inputOne, setInputOne] = useState("");
+  const [inputTwo, setInputTwo] = useState("");
+  const inputOneRef = useRef(null);
 
   const handleOnClick = () => {
-    if (inputOneRef.current?.value && inputTwoRef.current?.value) {
-      const number1 = Number(inputOneRef.current.value);
-      const number2 = Number(inputTwoRef.current.value);
+    if (inputOne !== "" && inputTwo !== "") {
+      const addition = Number(inputOne) + Number(inputTwo);
+      setResult(addition);
+      setInputOne("");
+      setInputTwo("");
 
-      setResult(number1 + number2);
+      if (inputOneRef.current) {
+        inputOneRef.current.focus();
+      }
     } else {
       alert("skriv in en siffra i båda fälten, tack!");
     }
@@ -24,10 +37,25 @@ const Addition = () => {
   return (
     <div className="additionDiv">
       <div>
-        <input className="inputOne" type="text" ref={inputOneRef} />
+        <input
+          className="inputOne"
+          type="number"
+          ref={inputOneRef}
+          value={inputOne}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setInputOne(e.target.value);
+          }}
+        />
       </div>
       <div>
-        <input className="inputTwo" type="text" ref={inputTwoRef} />
+        <input
+          className="inputTwo"
+          type="number"
+          value={inputTwo}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setInputTwo(e.target.value);
+          }}
+        />
       </div>
       <div>
         <button onClick={handleOnClick}>Klicka mig</button>
