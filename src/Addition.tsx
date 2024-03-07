@@ -17,7 +17,7 @@ const Addition = () => {
   const [result, setResult] = useState(0);
   const [inputOne, setInputOne] = useState("");
   const [inputTwo, setInputTwo] = useState("");
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleOnClick = () => {
     if (inputOne !== "" && inputTwo !== "") {
@@ -26,7 +26,7 @@ const Addition = () => {
       setInputOne("");
       setInputTwo("");
 
-      inputRef.current.focus(); //FRÅGA NIKLAS
+      inputRef.current?.focus(); //FRÅGA NIKLAS
     } else {
       alert("skriv in en siffra i båda fälten, tack!");
     }

@@ -46,25 +46,32 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
     .allInputs{
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-
         .inputListDiv{
           input{
             margin-left: 1rem;
           }
         }
-
         .emojisDiv{
           select{
             margin-left: 0.6rem;
           }
-          
         }
     }
+}
 
+.prettyTextDiv{
+  height: auto;
+  width: 20rem;
+  border: solid hotpink 2px;
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
+  
 }
